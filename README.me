@@ -1,0 +1,70 @@
+If a model does not mention whether it removes punctuatin, etc, assumed that it has removed
+puncutation, removed stopwords and does not stem.
+
+### Baseline ###
+
+Uses bag of words model, features are 1-grams, dict size: 1000
+Removes Punctuation, Keeps Stopwords, No Stemming
+(Unbalanced)
+Accuracy, BER ~ 0.92570, 0.80175
+TP, TN, FP, FN = 10623, 305, 725, 152
+(Balanced)
+Accuracy, BER ~ 0.85203, 0.64918
+TP, TN, FP, FN = 9317, 720, 310, 1458
+
+#### Other ####
+
+--- Model 1: Naive Bayes ---
+Accuracy, BER ~ 0.91274, 0.45637
+TP, TN, FP, FN = 10775, 0, 1030, 0
+
+--- Model 2: Naive Rating Classification ---
+Exension of baseline model, Dict size: 1000
+Adds extra feature rating how positive/negative the text is [-1, 1]
+Attempts to classify a word as positive/negative by counting
+(Unbalanced)
+Accuracy, BER ~ 0.87090, 0.63650
+TP, TN, FP, FN = 9815, 467, 563, 960
+(Balanced)
+Accuracy, BER ~ 0.77839, 0.61472
+TP, TN, FP, FN = 8370, 819, 211, 2405
+
+--- Model _: ___________ ---
+Uses bag of words model, features are 1-grams, dict size: 1000
+Removes Punctuation, removes Stopwords, No Stemming
+Words consists of top adjectives, adverbs and verbs
+(Unbalanced)
+Accuracy, BER ~ 0.91749, 0.76166
+TP, TN, FP, FN = 10660, 171, 859, 115
+(Balanced)
+Accuracy, BER ~ 0.83477, 0.61306
+TP, TN, FP, FN = 9290, 561, 469, 1485
+
+--- Model _: ___________ ---
+Uses bag of words model, 1-grams, dict size: 1000
+Removes Punctuation, removes Stopwords, No Stemming
+features are tf-idf of words and trained on a linear SVC
+(Unbalanced)
+Accuracy, BER ~ 0.92299, 0.79725
+TP, TN, FP, FN = 10650, 246, 784, 125
+(Balanced)
+Accuracy, BER ~ 0.84625, 0.64052
+TP, TN, FP, FN = 9309, 681, 349, 1466
+
+--- Model 5: Bigrams ---
+Uses only bigrams, Dict size: 1000
+(Unbalanced)
+Accuracy, BER ~ 0.91850, 0.78646
+TP, TN, FP, FN = 10695, 148, 882, 80
+(Balanced)
+Accuracy, BER ~ 0.53375, 0.55469
+TP, TN, FP, FN = 5438, 863, 167, 5337 
+
+--- Model 6: Bigrams filtered by POS ---
+Extension of model 5
+(Unbalanced)
+Accuracy, BER ~ 0.91791, 0.7934
+TP, TN, FP, FN = 10713, 123, 907, 62
+(Balanced)
+Accuracy, BER ~ 0.857, 0.59296
+TP, TN, FP, FN = 9782, 335, 695, 993
